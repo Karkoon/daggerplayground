@@ -1,7 +1,7 @@
-package com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.server;
+package com.karkoon.daggerplayground.serverowningworker.server;
 
 
-import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.Context;
+import com.karkoon.daggerplayground.serverowningworker.Context;
 import dagger.assisted.Assisted;
 import dagger.assisted.AssistedFactory;
 import dagger.assisted.AssistedInject;

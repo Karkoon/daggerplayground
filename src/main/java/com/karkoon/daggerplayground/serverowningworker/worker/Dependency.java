@@ -1,6 +1,6 @@
-package com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.worker;
+package com.karkoon.daggerplayground.serverowningworker.worker;
 
-import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.server.ServerInterface;
+import com.karkoon.daggerplayground.serverowningworker.server.ServerInterface;
 
 import javax.inject.Inject;
 
