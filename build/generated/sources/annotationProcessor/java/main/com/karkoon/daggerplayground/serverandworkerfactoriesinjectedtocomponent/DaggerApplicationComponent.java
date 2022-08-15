@@ -4,8 +4,15 @@ import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.
 import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.server.ServerInterface;
 import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.server.Server_Factory;
 import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.server.Server_Factory_Impl;
+import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.worker.Dependency_Factory;
+import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.worker.Worker;
+import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.worker.WorkerComponent;
+import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.worker.WorkerModule;
+import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.worker.Worker_Factory;
 import dagger.internal.DaggerGenerated;
+import dagger.internal.DelegateFactory;
 import dagger.internal.DoubleCheck;
+import dagger.internal.InstanceFactory;
 import dagger.internal.Preconditions;
 import javax.annotation.processing.Generated;
 import javax.inject.Provider;
@@ -82,8 +89,8 @@ public final class DaggerApplicationComponent implements ApplicationComponent {
     }
 
     @Override
-    public WorkerComponentBuilder server(ServerInterface arg0) {
-      this.server = Preconditions.checkNotNull(arg0);
+    public WorkerComponentBuilder server(ServerInterface serverInterface) {
+      this.server = Preconditions.checkNotNull(serverInterface);
       return this;
     }
 
@@ -101,16 +108,32 @@ public final class DaggerApplicationComponent implements ApplicationComponent {
 
     private final WorkerComponentImpl workerComponentImpl = this;
 
+    private Provider<ServerInterface> serverProvider;
+
+    @SuppressWarnings("rawtypes")
+    private Provider dependencyProvider;
+
+    private Provider<Worker> workerProvider;
+
     private WorkerComponentImpl(DaggerApplicationComponent applicationComponent,
         ServerInterface serverParam) {
       this.applicationComponent = applicationComponent;
       this.server = serverParam;
+      initialize(serverParam);
 
+    }
+
+    @SuppressWarnings("unchecked")
+    private void initialize(final ServerInterface serverParam) {
+      this.serverProvider = InstanceFactory.create(serverParam);
+      this.dependencyProvider = new DelegateFactory<>();
+      this.workerProvider = Worker_Factory.create(applicationComponent.contextProvider, serverProvider, dependencyProvider);
+      DelegateFactory.setDelegate(dependencyProvider, Dependency_Factory.create(workerProvider));
     }
 
     @Override
     public Worker getWorker() {
-      return new Worker(applicationComponent.contextProvider.get(), server);
+      return new Worker(applicationComponent.contextProvider.get(), server, DoubleCheck.lazy(dependencyProvider));
     }
   }
 }

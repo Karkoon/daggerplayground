@@ -6,7 +6,7 @@ import javax.inject.Singleton;
 @Singleton
 public class Context {
   @Inject
-  Context() {
+  public Context() {
     super();
   }
 }

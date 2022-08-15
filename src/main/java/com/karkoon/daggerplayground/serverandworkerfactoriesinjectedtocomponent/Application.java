@@ -1,6 +1,7 @@
 package com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent;
 
 import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.server.Server;
+import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.worker.WorkerComponent;
 
 import javax.inject.Inject;
 
@@ -13,11 +14,11 @@ public class Application {
   public Application(
       Context context,
       WorkerComponent.Builder builder,
-      Server.Factory serverComponent
+      Server.Factory serverFactory
   ) {
     this.context = context;
     this.builder = builder;
-    this.serverFactory = serverComponent;
+    this.serverFactory = serverFactory;
   }
 
   public void run() {

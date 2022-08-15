@@ -1,4 +1,4 @@
-package com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent;
+package com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.worker;
 
 import dagger.Module;
 
