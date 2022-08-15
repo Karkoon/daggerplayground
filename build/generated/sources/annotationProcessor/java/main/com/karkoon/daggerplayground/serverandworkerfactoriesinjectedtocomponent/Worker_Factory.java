@@ -1,5 +1,6 @@
 package com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent;
 
+import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.server.ServerInterface;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
 import dagger.internal.QualifierMetadata;

@@ -29,7 +29,10 @@ public class Server implements ServerInterface {
   }
 
   @AssistedFactory
-  public interface Factory extends ServerAssistedFactory {
+  public interface Factory {
+    Server get(
+        String address
+    );
   }
 
 }

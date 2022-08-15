@@ -21,7 +21,7 @@ public class Worker {
 
   public void work() {
     System.out.println("########");
-    System.out.println("Context: " + context.hashCode());
+    System.out.println("Context: " + context.hashCode() + " " + server.getContext().hashCode());
     System.out.println("Server: " + server.getAddress() + " " + server.hashCode());
     System.out.println("Worker: " + this.hashCode());
   }
