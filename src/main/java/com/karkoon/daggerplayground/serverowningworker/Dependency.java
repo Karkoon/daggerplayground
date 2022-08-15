@@ -1,16 +1,18 @@
-package com.karkoon.daggerplayground.serverowningworker.worker;
+package com.karkoon.daggerplayground.serverowningworker;
 
 import com.karkoon.daggerplayground.serverowningworker.server.ServerInterface;
+import com.karkoon.daggerplayground.serverowningworker.worker.Worker;
+import com.karkoon.daggerplayground.serverowningworker.worker.WorkerScope;
 
 import javax.inject.Inject;
 
 @WorkerScope
-class Dependency {
+public class Dependency {
   private final Worker worker;
   private final ServerInterface serverInterface;
 
   @Inject
-  Dependency(
+  public Dependency(
       Worker worker,
       ServerInterface serverInterface
   ) {
@@ -18,7 +20,7 @@ class Dependency {
     this.serverInterface = serverInterface;
   }
 
-  void doService() {
+  public void doService() {
     System.out.println(this.worker.getContext().hashCode());
     System.out.println("services server " + serverInterface.getAddress() + " " + serverInterface.hashCode());
   }

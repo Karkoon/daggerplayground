@@ -11,7 +11,9 @@ public interface WorkerComponent {
 
   @Subcomponent.Builder
   interface Builder {
-    @BindsInstance Builder server(ServerInterface serverInterface);
+    @BindsInstance
+    Builder server(ServerInterface serverInterface);
+
     WorkerComponent build();
   }
 }

@@ -9,7 +9,7 @@ import dagger.assisted.AssistedInject;
 
 public class Server implements ServerInterface {
 
-  private final WorkerComponent.Builder builder;
+  private final WorkerComponent builder;
   private final String address;
   private final Context context;
 
@@ -20,12 +20,15 @@ public class Server implements ServerInterface {
       @Assisted String address
   ) {
     this.context = context;
-    this.builder = builder;
+    this.builder = builder.server(this).build();
     this.address = address;
   }
 
   public void run() {
-    builder.server(this).build().getWorker().work();
+   builder.getWorker().work();
+   builder.getWorker().work();
+   builder.getWorker().work();
+   System.out.println("awtf");
   }
 
   public String getAddress() {

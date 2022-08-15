@@ -20,6 +20,6 @@ public class Application {
 
   public void run() {
     serverFactory.get("abc").run();
-    serverFactory.get("def").run();
+    //serverFactory.get("def").run();
   }
 }

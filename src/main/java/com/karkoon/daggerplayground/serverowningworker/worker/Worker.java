@@ -2,6 +2,7 @@ package com.karkoon.daggerplayground.serverowningworker.worker;
 
 
 import com.karkoon.daggerplayground.serverowningworker.Context;
+import com.karkoon.daggerplayground.serverowningworker.Dependency;
 import com.karkoon.daggerplayground.serverowningworker.server.ServerInterface;
 import dagger.Lazy;
 
