@@ -1,6 +1,6 @@
-package com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent;
+package com.karkoon.daggerplayground.serverowningworkerProblem;
 
-import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.worker.WorkerModule;
+import com.karkoon.daggerplayground.serverowningworkerProblem.worker.WorkerModule;
 import dagger.Component;
 
 import javax.inject.Singleton;

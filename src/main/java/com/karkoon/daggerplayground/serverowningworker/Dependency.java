@@ -22,6 +22,6 @@ public class Dependency {
 
   public void doService() {
     System.out.println(this.worker.getContext().hashCode());
-    System.out.println("services server " + serverInterface.getAddress() + " " + serverInterface.hashCode());
+    System.out.println("dependency using server " + serverInterface.getAddress() + " " + serverInterface.hashCode());
   }
 }

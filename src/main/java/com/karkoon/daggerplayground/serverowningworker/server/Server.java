@@ -28,7 +28,6 @@ public class Server implements ServerInterface {
    builder.getWorker().work();
    builder.getWorker().work();
    builder.getWorker().work();
-   System.out.println("awtf");
   }
 
   public String getAddress() {

@@ -1,8 +1,10 @@
-package com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.worker;
+package com.karkoon.daggerplayground.serverowningworkerProblem.worker;
 
 
-import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.Context;
-import com.karkoon.daggerplayground.serverandworkerfactoriesinjectedtocomponent.server.ServerInterface;
+import com.karkoon.daggerplayground.serverowningworkerProblem.Context;
+import com.karkoon.daggerplayground.serverowningworkerProblem.dependecy.Dependency;
+import com.karkoon.daggerplayground.serverowningworkerProblem.dependency_using_dependency.DependencyTwo;
+import com.karkoon.daggerplayground.serverowningworkerProblem.server.ServerInterface;
 import dagger.Lazy;
 
 import javax.inject.Inject;
@@ -13,16 +15,19 @@ public class Worker {
   private final Context context;
   private final ServerInterface server;
   private final Lazy<Dependency> dependencyLazy;
+  private final Lazy<DependencyTwo> dependencyTwoLazy;
 
   @Inject
   public Worker(
       Context context,
       ServerInterface server,
-      Lazy<Dependency> dependencyLazy
+      Lazy<Dependency> dependencyLazy,
+      Lazy<DependencyTwo> dependencyTwoLazy
   ) {
     this.context = context;
     this.server = server;
     this.dependencyLazy = dependencyLazy;
+    this.dependencyTwoLazy = dependencyTwoLazy;
   }
 
   public void work() {
@@ -31,6 +36,7 @@ public class Worker {
     System.out.println("Server: " + server.getAddress() + " " + server.hashCode());
     System.out.println("Worker: " + this.hashCode());
     dependencyLazy.get().doService();
+    dependencyTwoLazy.get().doService();
   }
 
   public Context getContext() {
